@@ -1,0 +1,43 @@
+<md-card class="spellbook-page">
+
+	<md-toolbar>
+		<h2 class="md-toolbar-tools">
+			<span>Level {{level}}</span>
+			<span flex></span>
+			<span>{{preparedSpells.length}}</span>
+		</h2>
+	</md-toolbar>
+
+	<md-tabs selected="data.selectedIndex" center md-theme="grey">
+		<md-tab id="tab1" aria-controls="tab1-content">
+			Prepared
+		</md-tab>
+		<md-tab id="tab2" aria-controls="tab2-content">
+			Available
+		</md-tab>
+	</md-tabs>
+
+	<ng-switch on="data.selectedIndex" class="tabpanel-container">
+		<md-list class="prepared" role="tabpanel" id="tab1-content" aria-labelledby="tab2" ng-switch-when="0">
+			<md-item ng-repeat="spell in preparedSpells | orderBy:'title' track by $index">
+				<md-checkbox ng-model="spell.cast" ng-disabled="spell.cast">{{spell.title}}</md-checkbox>
+			</md-item>
+		</md-list>
+
+		<md-content class="available" role="tabpanel" id="tab2-content" aria-labelledby="tab1" ng-switch-when="1">
+			<md-list>
+				<md-item ng-repeat="spell in availableSpells">
+					<md-item-content>
+						<div class="md-tile-left">
+							<md-button ng-disabled="!spellsPreparationPhase" class="md-primary" ng-click="prepare($index)">+</md-button>
+							<md-button disabled>{{preparedCount($index)}}</md-button>
+							<md-button ng-disabled="!spellsPreparationPhase" class="warn" ng-click="unPrepare($index)">-</md-button>
+						</div>
+						<div class="md-tile-content">{{spell}}</div>
+					</md-item-content>
+					<md-divider ng-if="!$last"></md-divider>
+				</md-item>
+			</md-list>
+		</md-content>
+	</ng-switch>
+</md-card>

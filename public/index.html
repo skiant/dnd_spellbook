@@ -25,10 +25,10 @@
 		<h1 class="md-toolbar-tools">
 			<span>Spellbook</span>
 			<span flex></span>
-			<div ng-controller="actionsController">
-				<md-button ng-if="!spellsPreparationPhase" ng-click="rest()">Go to rest</md-button>
-				<md-button ng-if="!spellsPreparationPhase" ng-click="togglePreparation()">Prepare Spells</md-button>
-				<md-button ng-if="spellsPreparationPhase" ng-click="togglePreparation()">End preparation</md-button>
+			<div ng-controller="actionsController as actions">
+				<md-button ng-if="!actions.status.isPreparing()" ng-click="actions.status.rest()">Go to rest</md-button>
+				<md-button ng-if="!actions.status.isPreparing()" ng-click="actions.status.startPrep()">Prepare Spells</md-button>
+				<md-button ng-if="actions.status.isPreparing()" ng-click="actions.status.endPrep()">End preparation</md-button>
 			</div>
 		</h1>
 	</md-toolbar>
@@ -51,6 +51,7 @@
 	<script src="/js/spellbook-page.js"></script>
 	<script src="/js/actions-controller.js"></script>
 	<script src="/js/spell-pages-controller.js"></script>
+	<script src="/js/status-service.js"></script>
 
 </body>
 </html>

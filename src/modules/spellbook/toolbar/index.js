@@ -1,3 +1,12 @@
-import module from '../index.js';
+import template from './template.html';
+import controller from './controller.js';
 
-module.directive();
+export default function toolbar() {
+	return {
+		scope: {},
+		controller: controller,
+		controllerAs: 'toolbarCtrl',
+		bindToController: true,
+		template: template,
+	};
+}

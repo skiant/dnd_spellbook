@@ -1,5 +1,7 @@
 import angular from 'angular';
 
-const spellbook = angular.module('spellbook', []);
+import routes from './routes.js';
 
-export default spellbook.name;
+export default angular.module('spellbook', [])
+	.config(routes)
+	.name;

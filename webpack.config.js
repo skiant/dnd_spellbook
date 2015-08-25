@@ -1,10 +1,13 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
+
+
 module.exports = {
 	entry: './src/index.js',
 	output: {
 		path: './dist/',
 		filename: 'bundle.js',
 	},
-
 	module: {
 		preLoaders: [
 			{test: /\.js$/, exclude: /node_modules/, loader: 'eslint-loader'},
@@ -16,4 +19,10 @@ module.exports = {
 			{test: /\.html/, loader: 'html'},
 		],
 	},
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: './src/index.html',
+			inject: 'body',
+		}),
+	],
 };

@@ -14,7 +14,7 @@ module.exports = {
 		],
 		loaders: [
 			{test: /\.js?$/, exclude: /node_modules/, loader: 'babel'},
-			{test: /\.css$/, loader: 'style-loader!css-loader'},
+			{test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader'},
 			{test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/, loader: 'url-loader?limit=16384'},
 			{test: /\.html/, loader: 'html'},
 		],
@@ -25,4 +25,7 @@ module.exports = {
 			inject: 'body',
 		}),
 	],
+	postcss: function () {
+		return [require('autoprefixer'), require('lost')];
+	}
 };

@@ -39,7 +39,7 @@
     "webpack-dev-server": "^1.10.1"
   },
   "scripts": {
-    "dev": "node_modules/.bin/webpack-dev-server --content-base dist/",
+    "dev": "webpack-dev-server --content-base dist/",
     "test": "mocha --compilers js:mocha-babel ./src/**/test.js"
   }
 }

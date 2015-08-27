@@ -2,3 +2,10 @@ language: node_js
 sudo: false
 node_js:
   - '0.10'
+
+before_script:
+  - npm install -g istanbul codeclimate-test-reporter
+
+after_script:
+  - istanbul cover _mocha -- --compilers js:mocha-babel ./src/**/test.js
+  - codeclimate-test-reporter < coverage/lcov.info

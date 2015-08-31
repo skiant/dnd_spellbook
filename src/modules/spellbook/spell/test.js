@@ -8,21 +8,6 @@ describe('spell', function testDomain() {
 		spell = new Spell('test spell', 2, 'test domain');
 	});
 
-	it('should have a name', () => {
-		assert.property(spell, 'name', 'spell name not found');
-		assert.equal(spell.name, 'test spell', 'not matching the required name');
-	});
-
-	it('should belong to a domain', () => {
-		assert.property(spell, 'domain', 'spell domain not found');
-		assert.equal(spell.domain, 'test domain', 'not matching the required domain');
-	});
-
-	it('should have  a level', () => {
-		assert.property(spell, 'level', 'spell level not found');
-		assert.equal(spell.level, 2, 'not matching the required level');
-	});
-
 	it('should not be prepared', () => {
 		assert.strictEqual(spell.prepared, 0, 'spell prepared');
 	});

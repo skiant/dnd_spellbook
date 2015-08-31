@@ -1,6 +1,6 @@
 class domain {
-	constructor() {
-		this.name = '';
+	constructor(name) {
+		this.name = name;
 	}
 }
 
